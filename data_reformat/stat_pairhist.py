@@ -34,5 +34,4 @@ for i in range(len(n)):
     plt.text(bins[i]+(bins[1]-bins[0])/2, n[i]*1.01, int(n[i]), ha='center', va= 'bottom')
 plt.show()
 
-print('test')
 
