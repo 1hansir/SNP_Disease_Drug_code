@@ -3,7 +3,7 @@ library(dplyr)
 
 mdir <- 'D:/Pycharm_projects/SNP_Disease_Drug/'
 
-cmap_filename <- paste0(mdir, '../../CMap/Format_data/cp_MCF7_lm.csv')
+cmap_filename <- paste0(mdir, '../../CMap/Format_data/cp/cp_MCF7_lm.csv')
 cmap_alldata <- fread(cmap_filename)
 lm_gene_ls <- unlist(colnames(cmap_alldata))
 lm_gene_ls <- lm_gene_ls[2:length(lm_gene_ls)]

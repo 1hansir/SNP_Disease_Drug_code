@@ -33,6 +33,8 @@ for i in range(0,n_gtex):
 # SNP-centered pair dictionary
 snp_pair_dic = {}
 snp_pair_dic_num = {}
+
+snp_gene_pairs = set()
 for i in range(0,n_gtex):
     snp_id = all_SNPs[i]
     if snp_id not in snp_pair_dic.keys():

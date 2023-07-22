@@ -5,8 +5,8 @@ print(cp_info_d.columns)
 n_ori = len(cp_info_d)
 print(n_ori)
 
-map_toDB = pd.read_csv("../../mapping_files/structure links.csv", low_memory=False, usecols=['DrugBank ID', 'InChIKey'])
-map_toVA = pd.read_csv("../../mapping_files/Drugbank_rxNorm_mapping.csv", low_memory=False, usecols=['DrugBank_ID', 'RxNorm_name'])
+map_toDB = pd.read_csv("../../mapping_files/Drug_Bank/structure links.csv", low_memory=False, usecols=['DrugBank ID', 'InChIKey'])
+map_toVA = pd.read_csv("../../mapping_files/DB_RN_Map/Drugbank_rxNorm_mapping.csv", low_memory=False, usecols=['DrugBank_ID', 'RxNorm_name'])
 # print(map_toDB)
 # print(cp_info.loc[cp_info.duplicated()])
 cp_info = cp_info_d.drop_duplicates()                                    # Duplicated compounds
@@ -49,7 +49,7 @@ for i in range(0,n_cp):
         map_pairs.add((cp_info.loc[i,'pert_id'],cp_info.loc[i,'canonical_smiles'],inchi_k,DB_ID,Rx_name))
 
 map_pairs = pd.DataFrame(map_pairs)
-map_pairs.to_csv("../mapping_files/pert_id2RxNorm.csv",header=['pert_id','Smiles','inchikey','DBID','RxNorm'],sep='\t')
+map_pairs.to_csv("../../mapping_files/pert_id2RxNorm.csv",header=['pert_id','Smiles','inchikey','DBID','RxNorm'],sep='\t')
 
 print("# of Cleaned compounds in Cmap:{}".format(n_cp))
 print("Perturbagen that can be mapped to DrugBank ID:{}".format(count_toDB))
