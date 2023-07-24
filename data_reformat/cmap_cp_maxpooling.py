@@ -1,9 +1,7 @@
 from cmapPy.pandasGEXpress.parse import parse
 import pandas as pd
 
-# cell_info = pd.read_csv("../../CMap/Datasets/cellinfo_beta.txt", sep="\t", low_memory=False)
-# sig_info = pd.read_csv("../../CMap/Datasets/siginfo_beta.txt", sep="\t", low_memory=False)
-# gene_info = pd.read_csv("../../CMap/Datasets/geneinfo_beta.txt", sep="\t", dtype=str)
+
 cp_info_d = pd.read_csv("../../CMap/Datasets/compoundinfo_beta.txt", sep="\t", low_memory=False, usecols=['pert_id'])
 cp_info_d = cp_info_d['pert_id']
 n_cp = len(cp_info_d)

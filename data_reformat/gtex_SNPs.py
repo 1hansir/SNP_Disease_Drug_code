@@ -8,7 +8,9 @@ gtex_filenames = ['GTEx/GTEx_Analysis_v8_eQTL/Breast_Mammary_Tissue.signifpairs.
                  'GTEx/GTEx_Analysis_v8_eQTL/Liver.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Lung.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Prostate.signifpairs.txt',
-                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt']
+                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Ovary.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Stomach.signifpairs.txt']
 
 # read gtex data from different tissues:
 gtex_alldata = []
@@ -49,9 +51,6 @@ count_toGWAS = 0
 count_todbSNPs = 0
 sig_snp = set()
 
-# gwas_mapped = []
-# gwas_unmapped = []
-# gtex_unmapped = []
 
 snp_db_dic = dict(zip(map_todbsnp['variant_id'],map_todbsnp['rs_id_dbSNP151_GRCh38p7']))
 snp_gwas_dic = dict(zip(gwas_SNPs,gwas_SNPs))
@@ -93,9 +92,3 @@ sig_snp_ingwas = sig_snp[sig_snp['GWAS_label'] == 1]
 sig_snp_ingwas.to_csv(mdir+'mapping_files/SNP_INDEX/snpid_GWAS_file.csv',sep='\t',columns=['variant_id','SNP_id'],
                       header=['variant_id','SNP_id'],index_label='SNP_index')
 
-# gwas_mapped = pd.DataFrame(gwas_mapped)
-# gwas_mapped.to_csv(mdir+'mapping_files/gwas_mapped.csv',sep='\t')
-# gtex_unmapped = pd.DataFrame(gtex_unmapped)
-# gtex_unmapped.to_csv(mdir+'mapping_files/gtex_unmapped.csv',sep='\t')
-
-# gwas_unmapped = list(set(gwas_SNPs)-set(gwas_mapped))

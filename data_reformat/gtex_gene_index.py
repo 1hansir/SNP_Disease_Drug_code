@@ -8,7 +8,11 @@ gtex_filenames = ['GTEx/GTEx_Analysis_v8_eQTL/Breast_Mammary_Tissue.signifpairs.
                  'GTEx/GTEx_Analysis_v8_eQTL/Liver.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Lung.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Prostate.signifpairs.txt',
-                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt']
+                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Ovary.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Stomach.signifpairs.txt']
+
+
 
 # read gtex data from different tissues:
 gtex_alldata = []

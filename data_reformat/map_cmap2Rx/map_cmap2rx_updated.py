@@ -1,19 +1,19 @@
 import pandas as pd
 
-cp_info_d = pd.read_csv("../../CMap/Datasets/compoundinfo_beta.txt", sep="\t", low_memory=False, usecols=['pert_id', 'canonical_smiles', 'inchi_key'])
+cp_info_d = pd.read_csv("../../../CMap/Datasets/compoundinfo_beta.txt", sep="\t", low_memory=False, usecols=['pert_id', 'canonical_smiles', 'inchi_key'])
 print(cp_info_d.columns)
 n_ori = len(cp_info_d)
 print(n_ori)
 
-map_toDB = pd.read_csv("../../mapping_files/Drug_Bank/drugbank vocabulary.csv", low_memory=False,sep=',', usecols=['DrugBank ID', 'Standard InChI Key'])
+map_toDB = pd.read_csv("../../../mapping_files/Drug_Bank/drugbank vocabulary.csv", low_memory=False, sep=',', usecols=['DrugBank ID', 'Standard InChI Key'])
 # map_toDB_2 = pd.read_csv("../../mapping_files/Drug_Bank/structure links.csv", low_memory=False, usecols=['DrugBank ID', 'InChIKey'])
-map_toVA = pd.read_csv("../../mapping_files/DB_RN_Map/RxNorm_DB.csv", low_memory=False, usecols=['RXCUI', 'CODE'])
+map_toVA = pd.read_csv("../../../mapping_files/DB_RN_Map/RxNorm_DB.csv", low_memory=False, usecols=['RXCUI', 'CODE'])
 map_toDB.columns = ['DrugBank ID', 'InChIKey']
 map_toVA.columns = ['RxNorm_name','DrugBank_ID']
 
 
 VA_filename = 'embeddings/VA_embed_500_20220607_items.csv'
-VA_item = pd.read_csv('../../embeddings/VA_embed_500_20220607_items.csv',usecols=['codes'])
+VA_item = pd.read_csv('../../../embeddings/VA_embed_500_20220607_items.csv', usecols=['codes'])
 VA_RX = VA_item[VA_item['codes'].str.startswith('RXNORM:',na=False)]
 VA_RX = VA_RX.reset_index(drop=True)
 

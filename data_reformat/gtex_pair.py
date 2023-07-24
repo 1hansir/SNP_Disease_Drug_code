@@ -8,7 +8,9 @@ gtex_filenames = ['GTEx/GTEx_Analysis_v8_eQTL/Breast_Mammary_Tissue.signifpairs.
                  'GTEx/GTEx_Analysis_v8_eQTL/Liver.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Lung.signifpairs.txt',
                  'GTEx/GTEx_Analysis_v8_eQTL/Prostate.signifpairs.txt',
-                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt']
+                 'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Ovary.signifpairs.txt',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Stomach.signifpairs.txt']
 
 tissue_dic = {'GTEx/GTEx_Analysis_v8_eQTL/Breast_Mammary_Tissue.signifpairs.txt': 'breast',
               'GTEx/GTEx_Analysis_v8_eQTL/Colon_Sigmoid.signifpairs.txt' : 'colon',
@@ -16,7 +18,9 @@ tissue_dic = {'GTEx/GTEx_Analysis_v8_eQTL/Breast_Mammary_Tissue.signifpairs.txt'
               'GTEx/GTEx_Analysis_v8_eQTL/Liver.signifpairs.txt': 'liver',
              'GTEx/GTEx_Analysis_v8_eQTL/Lung.signifpairs.txt':'lung',
              'GTEx/GTEx_Analysis_v8_eQTL/Prostate.signifpairs.txt' : 'prostate',
-             'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt' : 'skin'
+             'GTEx/GTEx_Analysis_v8_eQTL/Skin_Not_Sun_Exposed_Suprapubic.signifpairs.txt' : 'skin',
+            'GTEx/GTEx_Analysis_v8_eQTL/Ovary.signifpairs.txt': 'ovary',
+                  'GTEx/GTEx_Analysis_v8_eQTL/Stomach.signifpairs.txt':'stomach'
             }
 
 gene_index_filename = 'mapping_files/Gene_INDEX/Gene_index.csv'
@@ -35,7 +39,7 @@ for tissue_file in gtex_filenames:
     else:
         gtex_alldata = pd.concat([gtex_alldata, gtex_data_t])
 print(gtex_alldata.columns)
-all_pairs = gtex_alldata[['variant_id','gene_id','slope']]
+all_pairs = gtex_alldata[['variant_id','gene_id','slope']].copy()
 all_pairs['gene_id'] = all_pairs['gene_id'].str.split('.').str[0]
 all_pairs = all_pairs[all_pairs['variant_id'].isin(snp_index_dic.keys())]
 

@@ -1,12 +1,12 @@
 import pandas as pd
 
-cp_info_d = pd.read_csv("../../CMap/Datasets/compoundinfo_beta.txt", sep="\t", low_memory=False, usecols=['pert_id', 'canonical_smiles', 'inchi_key'])
+cp_info_d = pd.read_csv("../../../CMap/Datasets/compoundinfo_beta.txt", sep="\t", low_memory=False, usecols=['pert_id', 'canonical_smiles', 'inchi_key'])
 print(cp_info_d.columns)
 n_ori = len(cp_info_d)
 print(n_ori)
 
-map_toDB = pd.read_csv("../../mapping_files/Drug_Bank/structure links.csv", low_memory=False, usecols=['DrugBank ID', 'InChIKey'])
-map_toVA = pd.read_csv("../../mapping_files/DB_RN_Map/Drugbank_rxNorm_mapping.csv", low_memory=False, usecols=['DrugBank_ID', 'RxNorm_name'])
+map_toDB = pd.read_csv("../../../mapping_files/Drug_Bank/structure links.csv", low_memory=False, usecols=['DrugBank ID', 'InChIKey'])
+map_toVA = pd.read_csv("../../../mapping_files/DB_RN_Map/Drugbank_rxNorm_mapping.csv", low_memory=False, usecols=['DrugBank_ID', 'RxNorm_name'])
 # print(map_toDB)
 # print(cp_info.loc[cp_info.duplicated()])
 cp_info = cp_info_d.drop_duplicates()                                    # Duplicated compounds

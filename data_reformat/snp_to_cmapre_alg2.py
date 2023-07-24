@@ -4,11 +4,12 @@ import numpy as np
 mdir = 'D:/Pycharm_projects/SNP_Disease_Drug/'
 
 snp_pair_filename = 'mapping_files/PAIRS/all_pairs_t.csv'
-cmap_oe_filename = 'CMap/Format_data/Maxpool/oe.csv'
-cmap_ko_filename = 'CMap/Format_data/Maxpool/ko.csv'
+cmap_oe_filename = 'CMap/Format_data/Maxpool/oe_all.csv'
+cmap_ko_filename = 'CMap/Format_data/Maxpool/ko_all.csv'
 gene_cmap_info_filename = "/CMap/Datasets/geneinfo_beta.txt"
 snp_pairs = pd.read_csv(mdir + snp_pair_filename)
 oe_vec = pd.read_csv(mdir + cmap_oe_filename,index_col=['gene'])
+print(oe_vec.T.columns[oe_vec.T.columns.duplicated()])
 oe_dict = oe_vec.T.to_dict(orient='series')
 ko_vec = pd.read_csv(mdir + cmap_ko_filename,index_col=['gene'])
 ko_dict = ko_vec.T.to_dict(orient='series')
@@ -43,6 +44,7 @@ snp_list = snp_pairs['snp_index'].unique()
 snp_vec_all = vec_0
 flag = 0
 count_miss = 0
+count_hit = 0
 snp_name = []
 
 for i in range(0, len(snp_list)):
@@ -62,6 +64,7 @@ for i in range(0, len(snp_list)):
             try:
                 vec_add = slope_i_j * oe_dict[gene_i_j]
                 flag_i = 1
+                count_hit += 1
             except KeyError:
                 count_miss += 1
                 continue
@@ -70,6 +73,7 @@ for i in range(0, len(snp_list)):
             try:
                 vec_add = slope_i_j * ko_dict[gene_i_j]
                 flag_i = 1
+                count_hit += 1
             except KeyError:
                 count_miss += 1
                 continue
@@ -78,6 +82,8 @@ for i in range(0, len(snp_list)):
 
     if i % 10000 == 0:
         print(i/len(snp_list))
+        print(count_miss/(count_hit+1))
+        print('----------------------')
 
     if flag_i == 0:
         continue
